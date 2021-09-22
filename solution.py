@@ -26,9 +26,7 @@ def webServer(port=13331):
         outputdata = f.readlines()
         
         #Send one HTTP header line into socket.
-        #Fill in start
         connectionSocket.send("HTTP/2 200 OK".encode())
-        #Fill in end
 
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
@@ -38,15 +36,11 @@ def webServer(port=13331):
         connectionSocket.close()
       except IOError:
         # Send response message for file not found (404)
-        #Fill in start
         connectionSocket.send("HTTP/2 400 NOT FOUND".encode())
-        #Fill in end
 
 
         #Close client socket
-        #Fill in start
         connectionSocket.close()
-        #Fill in end
 
     except (ConnectionResetError, BrokenPipeError):
       pass
